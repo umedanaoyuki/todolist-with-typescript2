@@ -44,9 +44,9 @@ function App() {
               <input type="submit" value="作成" className="submitButton"></input>
           </form>
 
-          <ul>
+          <ul className="todoList">
               {todos.map((todo) => (
-                  <li>
+                  <li key={todo.id}>
                       {todo.inputValue}
                   </li>
               ))}

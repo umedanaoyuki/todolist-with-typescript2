@@ -1,5 +1,5 @@
 import './App.css'
-import {ChangeEvent, useState} from "react";
+import {ChangeEvent, FormEvent, useState} from "react";
 
 function App() {
 
@@ -13,13 +13,30 @@ function App() {
     };
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+        // console.log(e.target.value);
         setInputValue(e.target.value);
+    }
+
+    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+
+        //あたらしいTODOを作成
+        const newTodo: Todo = {
+            //inputValueに useStateの箇所の「inputValue」を挿入
+            inputValue: inputValue,
+            id: todos.length,
+            //初期値
+            checked: false,
+        };
+
+        setTodos([newTodo, ...todos]);
+
     }
     return (
     <div className="App">
       <div>
           <h2>Todoリスト with Typescript</h2>
-          <form onSubmit={() => {}}>
+          <form onSubmit={(e) => handleSubmit(e)}>
               <input className="inputText" type="text" onChange={(e) =>
               handleChange(e)}></input>
               <input type="submit" value="作成" className="submitButton"></input>

@@ -30,6 +30,8 @@ function App() {
         };
 
         setTodos([newTodo, ...todos]);
+        //フォームは空にする
+        setInputValue("");
 
     }
     return (

@@ -32,8 +32,13 @@ function App() {
         setTodos([newTodo, ...todos]);
         //フォームは空にする
         setInputValue("");
-
     }
+
+    const handleEdit = () => {
+
+    };
+
+
     return (
     <div className="App">
       <div>
@@ -47,7 +52,8 @@ function App() {
           <ul className="todoList">
               {todos.map((todo) => (
                   <li key={todo.id}>
-                      {todo.inputValue}
+                      <input className="inputText" value={todo.inputValue} type="text" onChange={(e) =>
+                          handleEdit(e)}></input>
                   </li>
               ))}
           </ul>
